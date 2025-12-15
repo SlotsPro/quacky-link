@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Open QuackyQ</title>
-    <script>
-      const params = new URLSearchParams(window.location.search);
-      const storeId = params.get("storeId");
+<head>
+  <title>Open QuackyQ</title>
+  <script>
+  const params = new URLSearchParams(window.location.search);
+  const storeId = params.get("storeId");
 
-      let appUrl = "quackyapp://";
-      if (storeId) {
-        appUrl += "?storeId=" + encodeURIComponent(storeId);
-      }
+  let appUrl = "quackyapp://";
+  if (storeId) {
+    appUrl += "?storeId=" + encodeURIComponent(storeId);
+  }
 
-      window.location = appUrl;
+  window.location = appUrl;
 
-      Linking.openURL("exp://10.0.0.6:8081/?storeId=4");
+  setTimeout(() => {
+    if (/android/i.test(navigator.userAgent)) {
+      window.location.href = "https://play.google.com/store/apps/details?id=com.yourcompanyname.quackyq";
+    } else if (/iphone|ipad|ipod/i.test(navigator.userAgent)) {
+      window.location.href = "https://apps.apple.com/app/idYOUR_APPLE_APP_ID";
+    } else {
+      alert("Open this on a mobile device");
+    }
+  }, 1500);
+</script>
 
-    //   setTimeout(() => {
-    //     if (/android/i.test(navigator.userAgent)) {
-    //       window.location.href =
-    //         "https://play.google.com/store/apps/details?id=com.yourcompanyname.quackyq";
-    //     } else if (/iphone|ipad|ipod/i.test(navigator.userAgent)) {
-    //       window.location.href =
-    //         "https://apps.apple.com/app/idYOUR_APPLE_APP_ID";
-    //     } else {
-    //       alert("Open this on a mobile device");
-    //     }
-    //   }, 1500);
-    </script>
-  </head>
-  <body>
-    <p>Opening QuackyQ...</p>
-  </body>
+</head>
+<body>
+  <p>Opening QuackyQ...</p>
+</body>
 </html>
