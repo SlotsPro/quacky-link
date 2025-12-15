@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Open QuackyQ</title>
+  <script>
+    // Try opening the app using the custom scheme
+    window.location = "quackyapp://";
+
+    // After 1.5 seconds, redirect to store
+    setTimeout(function() {
+      if (/android/i.test(navigator.userAgent)) {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.yourcompanyname.quackyq";
+      } else if (/iphone|ipad|ipod/i.test(navigator.userAgent)) {
+        window.location.href = "https://apps.apple.com/app/idYOUR_APPLE_APP_ID";
+      } else {
+        alert("Please open this link on a mobile device.");
+      }
+    }, 1500);
+  </script>
+</head>
+<body>
+  <p>Opening QuackyQ...</p>
+</body>
+</html>
