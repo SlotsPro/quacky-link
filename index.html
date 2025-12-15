@@ -3,10 +3,20 @@
 <head>
   <title>Open QuackyQ</title>
   <script>
-    // Try opening the app using the custom scheme
-    window.location = "quackyapp://";
+    // Get storeId from query params
+    const params = new URLSearchParams(window.location.search);
+    const storeId = params.get("storeId");
 
-    // After 1.5 seconds, redirect to store
+    // Build the app URL with storeId
+    let appUrl = "quackyapp://";
+    if (storeId) {
+      appUrl += "?storeId=" + encodeURIComponent(storeId);
+    }
+
+    // Try opening the app
+    window.location = appUrl;
+
+    // After 1.5 seconds, redirect to store (fallback)
     setTimeout(function() {
       if (/android/i.test(navigator.userAgent)) {
         window.location.href = "https://play.google.com/store/apps/details?id=com.yourcompanyname.quackyq";
