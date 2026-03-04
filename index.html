@@ -6,12 +6,15 @@
   const params = new URLSearchParams(window.location.search);
   const storeId = params.get("storeId");
 
-  let appUrl = "quackyapp://";
+  // let appUrl = "quackyapp://";
+    let appUrl = "exp://192.168.x.x:8081/--/";
   if (storeId) {
     appUrl += "?storeId=" + encodeURIComponent(storeId);
   }
 
   window.location = appUrl;
+
+    
 
   setTimeout(() => {
     if (/android/i.test(navigator.userAgent)) {
